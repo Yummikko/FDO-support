@@ -44,8 +44,8 @@ WORKDIR /root
 # Note: libssl-dev is is required by all the fdo services on ubuntu. I think the equivalent rpm is openssl-devel
 # Note: due to a bug in microdnf, using the --nodocs option causes an exit code of 141: https://github.com/rpm-software-management/microdnf/issues/50
 RUN mkdir -p /run/user/$UID && \
-    microdnf update -y --nodocs 1>/dev/null 2>&1 && \
-    microdnf install -y --nodocs ca-certificates findutils gettext java-17-openjdk openssl procps shadow-utils tar && \
+    microdnf update -y --nodocs libxml2 pam 1>/dev/null 2>&1 && \
+    microdnf install -y --nodocs ca-certificates findutils gettext java-17-openjdk-1:17.0.16.0.8-2.el9 openssl procps shadow-utils tar && \
     microdnf clean all
 
 #RUN curl -sS -o epel-release-latest-8.noarch.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
